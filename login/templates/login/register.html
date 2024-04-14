@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title  %} Login {% endblock %}
+
+{% block css  %} 
+<style>
+.login a{
+  color: #20af2a;
+  text-decoration: none;
+}
+
+.login a:hover{
+  text-decoration: underline;
+}
+
+</style>
+{% endblock %}
+
+{% block h1 %} Register yourself and be Nz's friend! {% endblock %}
+
+{% block form  %}
+
+{% if messages %}
+<h3 class="container">
+  {% for message in messages %}
+    {{message}}            
+  {% endfor %}
+</h3>
+{% endif %}
+
+<form action="{%url 'register'%}" method="POST">{% csrf_token %}
+
+  <input name="username" type="username"  placeholder="Username" required>
+  <input name="email" type="email" placeholder="Email" required>
+  <input name="password" type="password" placeholder="Password" required>
+  <input name="confirm-password" type="password" placeholder="Confirm password" required>
+
+  <button type="submit">Register</button>
+</form>
+
+<div class="login">
+  <p>Already have an account? <a href="{% url 'login' %}">Login</a> here.</p>
+
+</div>
+    
+{% endblock %}

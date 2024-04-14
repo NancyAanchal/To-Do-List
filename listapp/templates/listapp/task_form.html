@@ -1,0 +1,36 @@
+{% extends 'listapp/base.html' %}
+
+{% block content %}
+
+<div class="header-bar">
+    <a href="{% url 'tasks' %}">&#8592; Back</a>
+</div>
+   
+<div class="card-body">
+    <form method = "POST" action = "">
+        {% csrf_token %}
+        <div>
+            <label>Title:</label>
+            <input type="text" name="title" value="{{ form.title.value|default:'' }}" class="form-control">
+        </div>
+        
+        <div>
+            <label>Description:</label>
+            <textarea name="description" rows="8" cols="50">{{ form.description.value|default:'' }}</textarea>
+        </div>
+
+        <div>
+            <label>Complete:</label>
+            <input type="checkbox" name="complete" {% if task.complete %}checked{% endif %}>
+        </div>
+        <input type="submit" value="Create">
+    </form>
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+    <div class="logo">
+        <footer>&#8482; ANJ</footer>
+    </div>
+{% endblock footer %}

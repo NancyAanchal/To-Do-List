@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title  %} Log In {% endblock %}
+
+{% block css  %} 
+
+<style>
+.forgot-password {
+  margin-top: 15px;
+}
+
+.forgot-password a {
+  color: #20af2a;
+  text-decoration: none;
+}
+
+.register a{
+  color: #20af2a;
+  text-decoration: none;
+}
+
+.register a:hover{
+  text-decoration: underline;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+</style>
+
+{% endblock %}
+
+{% block h1 %} Log In {% endblock %}
+
+{% block form  %}
+{% if messages %}
+    <h3>
+      {% for message in messages %}
+      {{message}}
+      {% endfor %}
+    </h3>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      <!-- <input type="email" name="email" placeholder="Email" required> -->
+      <input type="username" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Log In</button>
+    </form>
+
+    <div class="forgot-password">
+      <a href="{% url 'password_reset' %}">Forgot Password?</a>
+    </div>
+
+    <div class="register">
+      <p>Don't have an account? <a href="register">Register here</a></p>
+
+    </div>
+    
+{% endblock %}
