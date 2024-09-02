@@ -1,0 +1,8 @@
+**pycache**/
+db.sqlite3
+vercel.json
+Screenshots/
+
+# Environment variables
+
+.env
