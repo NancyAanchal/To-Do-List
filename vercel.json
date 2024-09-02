@@ -1,0 +1,21 @@
+{
+  "builds": [
+    {
+      "src": "ToDoList/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "ToDoList/wsgi.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "ToDoList.settings",
+    "EMAIL_HOST_USER": "nancyjha2006@gmail.com",
+    "EMAIL_HOST_PASSWORD": "hwor izkm hhet xztw",
+    "DEBUG": "false"
+  }
+}
